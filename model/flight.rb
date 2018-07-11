@@ -1,4 +1,4 @@
 class Flight
   belong_to :pilot
-  belong_to :traveler 
+  belong_to :traveler
 end
