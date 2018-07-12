@@ -10,6 +10,9 @@ class Traveler < ActiveRecord::Base
   # def self.find_all_flights_by(name)
   #   all.flight
   # end
+  def self.find_by_name(name)
+     self.all.find {|traveler| traveler.name == name}
+  end
 
 
   def find_flight
@@ -34,18 +37,43 @@ class Traveler < ActiveRecord::Base
     find_flight.map {|flight| flight.pilot}
   end
 
+  def pilot_name
+    find_flight.map {|flight| flight.pilot.name}
+  end
+
   def all_flight_numbers
     find_flight.map {|flight| flight.flight_num}
+    # add sort by flight date?
   end
+
 
 
   def find_pilot_rating
-
+    # find_pilot.map {|pilot| {pilot.name => pilot.rating}}
+    find_pilot.each do |pilot|
+      puts "Flight Number:#{}\n"
+      puts "Pilot: #{pilot.name}\n"
+      puts "Pilot Rating: #{pilot.rating} Stars\n\n"
+    end
+    # "Here are the rating(s) for your flights: \n" + ratings
   end
 
 
-  def find_
-
+  def yes_no_input(y_n_response)
+    if y_n_response == "Yes" || y_n_response == "yes"
+      puts "Would you like to see your flight pilot(s)?"
+      input = gets.chomp
+      if input == "Yes" || input == "yes"
+        puts self.pilots.map {|pilot| pilot.name}
+      else
+        puts "Thank you for flying with Mochi Airlines. HAPPY TRAVELS~"
+      end
+    elsif y_n_response == "No" || input == "no"
+      puts "Okay. Here are the flights you have booked with us:"
+      puts self.all_flight_numbers
+    else
+      puts "Okay... Why don't you take the train??..."
+    end
   end
 
   #
