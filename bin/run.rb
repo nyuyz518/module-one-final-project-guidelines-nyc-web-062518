@@ -4,6 +4,7 @@ require_relative '../config/environment'
 
 puts "HELLO WORLD"
 
+# gets method for input
 
 # puts out welcome/greetings message
 # select language? (extra feature)

@@ -2,29 +2,53 @@ class Traveler < ActiveRecord::Base
   has_many :flights
   has_many :pilots, through: :flights
 
-
-  def buy_ticket
-    Flight.create(flight_num: flight_num, traveler_id: self, pilot_id: pilot_id)
-  end
+  #
+  # def buy_ticket
+  #   Flight.create(flight: flight, traveler_id: self, pilot_id: pilot_id)
+  # end
 
   # def self.find_all_flights_by(name)
   #   all.flight
   # end
 
 
-  def in_flight_by
-    # Flight.create(flight_num: flight_num, traveler_id: self, pilot_id: pilot_id)
-    if Flight.all.find {|flight| flight.traveler == self}
-      puts "Annyeonghaseo #{self.name}. Captain #{pilot.name} will be your pilot for flight ##{flight_num}."
-    else
-      puts "I'm sorry. We do not have flight booked under the name, #{self.name}."
+  def find_flight
+    # //helper method
+    # Flight.create(flight: flight, traveler_id: self, pilot_id: pilot_id)
+    # if Flight.all.find do |flight|
+    #   flight.traveler == self
+    #   binding.pry
+    #   puts "Annyeonghaseo #{self.name}. Captain #{} will be your pilot for flight ##{self.flight}."
+    #     end
+    # else
+    #   puts "I'm sorry. We do not have flight booked under the name, #{self.name}."
+    # end
+
+    # if Flight.all.count > 0
+      Flight.all.select do |flight|
+        flight.traveler_id == self.id
+      end
     end
+
+  def find_pilot
+    find_flight.map {|flight| flight.pilot}
   end
 
-  def join_flight
-  jay =  Pilot.all.first
-  # binding.pry
-    Flight.create(flight_num: 123, traveler_id: self, pilot_id: jay)
+
+  def find_pilot_rating
+
   end
+
+
+  def find_
+
+  end
+
+  #
+  # def join_flight
+  # jay =  Pilot.all.first
+  # # binding.pry
+  #   Flight.create(flight: 123, traveler_id: self, pilot_id: jay)
+  # end
 
 end
