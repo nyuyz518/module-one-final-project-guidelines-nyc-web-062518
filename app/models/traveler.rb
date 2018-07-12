@@ -7,6 +7,10 @@ class Traveler < ActiveRecord::Base
     Flight.create(flight_num: flight_num, traveler_id: self, pilot_id: pilot_id)
   end
 
+  # def self.find_all_flights_by(name)
+  #   all.flight
+  # end
+
 
   def in_flight_by
     # Flight.create(flight_num: flight_num, traveler_id: self, pilot_id: pilot_id)

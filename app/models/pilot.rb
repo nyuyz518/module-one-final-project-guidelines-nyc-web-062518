@@ -7,8 +7,14 @@ class Pilot < ActiveRecord::Base
     puts "#{self.name} pilots flight ##{flight_num}."
   end
 
-  # def method_name
-  #
-  # end
+
+  def flight_count
+    self.flights.size
+  end
+
+  def traveler_count
+    self.travelers.size
+  end
+
 
 end
