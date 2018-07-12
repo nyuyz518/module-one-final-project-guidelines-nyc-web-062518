@@ -34,6 +34,10 @@ class Traveler < ActiveRecord::Base
     find_flight.map {|flight| flight.pilot}
   end
 
+  def all_flight_numbers
+    find_flight.map {|flight| flight.flight_num}
+  end
+
 
   def find_pilot_rating
 
