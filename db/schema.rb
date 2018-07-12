@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 5) do
 
   create_table "flights", force: :cascade do |t|
-    t.string "flight"
+    t.string "flight_num"
     t.integer "traveler_id"
     t.integer "pilot_id"
   end
