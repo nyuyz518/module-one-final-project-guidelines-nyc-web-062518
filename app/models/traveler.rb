@@ -81,7 +81,7 @@ class Traveler < ActiveRecord::Base
       puts self.all_flight_numbers
     else
       puts "\n"
-      puts "Okay... Why don't you take the train??..."
+      # puts "Okay... Why don't you take the train??..."
     end
   end
 
