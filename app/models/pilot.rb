@@ -33,6 +33,16 @@ class Pilot < ActiveRecord::Base
     self.all.find {|pilot| pilot.rating == highest_rating}.name
   end
 
+  def self.most_flight_experience
+    exp_asc = []
+    all.each do |pilot|
+      exp_asc << pilot.yrs_exp
+    end
+    most_flight_exp = exp_asc.sort.reverse[0]
+    self.all.find {|pilot| pilot.yrs_exp == most_flight_exp}.name
+  end
+
+
 
   def find_flight
     if Flight.all.count > 0

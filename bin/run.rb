@@ -21,16 +21,17 @@ traveler_instance = Traveler.find_by(name:name)
 traveler_instance.yes_no_input(y_n_response)
 
 puts "May we assist you with anything else?"
+ #
+ # y_n_reponse = gets.chomp
 
- y_n_reponse = gets.chomp
-
- puts "Okay. Please select from the available options:"
+ puts "Please select from the available options:"
 
 # method to allow user to select "1, 2 ,3 ,or 4"
   puts "1. Your earliest flight booked."
   puts "2. Your shortest flight booked."
   puts "3. Highest rated pilot."
   puts "4. The pilot with the most years of experience."
+  puts "5. Nope~ I'm ready to fly!"
 
 select_choice = gets.chomp
 
@@ -42,7 +43,25 @@ when "2"
 when "3"
   puts Pilot.highest_rating
 when "4"
-  puts "ok4"
+  puts Pilot.most_flight_experience
+when "5"
+  good_flight = "
+_
+-=\`\
+|\ ____\_\__
+-=\` '' '' ''`)
+   `~~~~~/ /~~`
+-==/ /
+'-'
+                           _
+                         (  )
+_ .                         ( `  ) . )
+(  _ )_                      (_, _(  ,_)_)
+(_  _(_ ,)
+"
+
+puts good_flight
+puts "Have a great day and safe travels. Thank you for flying with Mochi Airlines"
 else
   puts "Go home..."
 end
