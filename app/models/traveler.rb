@@ -31,9 +31,13 @@ class Traveler < ActiveRecord::Base
     find_flight.map {|flight| flight.pilot.name}
   end
 
-  def all_flight_numbers
+  def self.all_flight_numbers
     find_flight.map {|flight| flight.flight_num}
     # add sort by flight date?
+  end
+
+  def all_travelers_flights
+    find_flight.sort_by {|flight| flight.departure_time}[0].flight_num
   end
 
 
