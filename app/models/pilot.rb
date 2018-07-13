@@ -1,5 +1,5 @@
 class Pilot < ActiveRecord::Base
-  has_many :flights 
+  has_many :flights
   has_many :travelers, through: :flights
 
   def pilots_flight(pilot_id,flight_num)
@@ -24,8 +24,13 @@ class Pilot < ActiveRecord::Base
     end
   end
 
-  def method_name
-
+  def self.highest_rating
+    rating_asc = []
+    all.each do |pilot|
+      rating_asc << pilot.rating
+    end
+    highest_rating = rating_asc.sort.reverse[0]
+    self.all.find {|pilot| pilot.rating == highest_rating}.name
   end
 
 
