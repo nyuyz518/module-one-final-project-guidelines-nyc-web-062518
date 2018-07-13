@@ -17,16 +17,6 @@ class Traveler < ActiveRecord::Base
 
   def find_flight
     # //helper method
-    # Flight.create(flight: flight, traveler_id: self, pilot_id: pilot_id)
-    # if Flight.all.find do |flight|
-    #   flight.traveler == self
-    #   binding.pry
-    #   puts "Annyeonghaseo #{self.name}. Captain #{} will be your pilot for flight ##{self.flight}."
-    #     end
-    # else
-    #   puts "I'm sorry. We do not have flight booked under the name, #{self.name}."
-    # end
-
     # if Flight.all.count > 0
       Flight.all.select do |flight|
         flight.traveler_id == self.id

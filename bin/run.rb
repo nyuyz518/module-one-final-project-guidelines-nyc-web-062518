@@ -18,7 +18,6 @@ puts "Do you know your flight number?"
 y_n_response = gets.chomp
 
 traveler_instance = Traveler.find_by(name:name)
-
 traveler_instance.yes_no_input(y_n_response)
 
 puts "May we assist you with anything else?"
