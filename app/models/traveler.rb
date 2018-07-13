@@ -60,38 +60,27 @@ class Traveler < ActiveRecord::Base
     # "Here are the rating(s) for your flights: \n" + ratings
   end
 
-  #
-  # def yes_no_input(y_n_response)
-  #   if y_n_response == "Yes" || y_n_response == "yes"
-  #     puts "Would you like to see your flight pilot(s)?"
-  #     input = gets.chomp
-  #     if input == "Yes" || input == "yes"
-  #       puts self.pilots.map {|pilot| pilot.name}
-  #     else
-  #       puts "Thank you for flying with Mochi Airlines. HAPPY TRAVELS~"
-  #     end
-  #   elsif y_n_response == "No" || input == "no"
-  #     puts "Okay. Here are the flights you have booked with us:"
-  #     puts self.all_flight_numbers
-  #   else
-  #     puts "Okay... Why don't you take the train??..."
-  #   end
-  # end
 
 
   def yes_no_input(y_n_response)
     if y_n_response == "Yes" || y_n_response == "yes"
+      puts "\n"
       puts "Would you like to see your flight pilot(s)?"
       input = gets.chomp
       if input == "Yes" || input == "yes"
-        puts self.find_pilot_rating
+        puts "\n"
+        self.find_pilot_rating
+        # binding.pry
       else
-        puts "Thank you for flying with Mochi Airlines. HAPPY TRAVELS~"
+        puts "\n"
+        puts "Thank you for flying with MOCHI Airlines. HAPPY TRAVELS~"
       end
     elsif y_n_response == "No" || input == "no"
       puts "Okay. Here are the flights you have booked with us:"
+      puts "\n"
       puts self.all_flight_numbers
     else
+      puts "\n"
       puts "Okay... Why don't you take the train??..."
     end
   end
