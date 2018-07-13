@@ -20,10 +20,3 @@ y_n_response = gets.chomp
 traveler_instance = Traveler.find_by(name:name)
 
 traveler_instance.yes_no_input(y_n_response)
-
-
-
-# gets method for input
-
-# puts out welcome/greetings message
-# select language? (extra feature)

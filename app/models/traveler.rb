@@ -50,13 +50,39 @@ class Traveler < ActiveRecord::Base
 
   def find_pilot_rating
     # find_pilot.map {|pilot| {pilot.name => pilot.rating}}
-    find_pilot.each do |pilot|
-      puts "Flight Number:#{}\n"
-      puts "Pilot: #{pilot.name}\n"
-      puts "Pilot Rating: #{pilot.rating} Stars\n\n"
+    find_flight.each do |flight|
+      flight_number = flight.flight_num
+      pilot_x = Pilot.where(id: flight.pilot_id)[0].name
+      pilot_rating = Pilot.where(id: flight.pilot_id)[0].rating
+      puts "Flight Number: #{flight_number}\n"
+      puts "Pilot: #{pilot_x}\n"
+      puts "Pilot Rating: #{pilot_rating} Stars\n\n"
     end
+    # find_pilot.each do |pilot|
+    #   # puts "Flight Number:#{}\n"
+    #   puts "Pilot: #{pilot.name}\n"
+    #   puts "Pilot Rating: #{pilot.rating} Stars\n\n"
+    # end
     # "Here are the rating(s) for your flights: \n" + ratings
   end
+
+  #
+  # def yes_no_input(y_n_response)
+  #   if y_n_response == "Yes" || y_n_response == "yes"
+  #     puts "Would you like to see your flight pilot(s)?"
+  #     input = gets.chomp
+  #     if input == "Yes" || input == "yes"
+  #       puts self.pilots.map {|pilot| pilot.name}
+  #     else
+  #       puts "Thank you for flying with Mochi Airlines. HAPPY TRAVELS~"
+  #     end
+  #   elsif y_n_response == "No" || input == "no"
+  #     puts "Okay. Here are the flights you have booked with us:"
+  #     puts self.all_flight_numbers
+  #   else
+  #     puts "Okay... Why don't you take the train??..."
+  #   end
+  # end
 
 
   def yes_no_input(y_n_response)
@@ -64,7 +90,7 @@ class Traveler < ActiveRecord::Base
       puts "Would you like to see your flight pilot(s)?"
       input = gets.chomp
       if input == "Yes" || input == "yes"
-        puts self.pilots.map {|pilot| pilot.name}
+        puts self.find_pilot_rating
       else
         puts "Thank you for flying with Mochi Airlines. HAPPY TRAVELS~"
       end
@@ -75,6 +101,9 @@ class Traveler < ActiveRecord::Base
       puts "Okay... Why don't you take the train??..."
     end
   end
+
+
+
 
   #
   # def join_flight
